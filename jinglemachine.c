@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <alsa/asoundlib.h>
 
+#include "play.c"
+
 static snd_seq_t *seq;
 static snd_seq_addr_t *ports;
 static volatile sig_atomic_t stop = 0;
@@ -90,6 +92,7 @@ void play_note(uint note, uint on)
 {
 	uint pad = note_to_pad(note);
 	fprintf(stderr, "\r%s%i", on ? "On  " : "Off ", pad);
+	play("/home/jeena/Downloads/afraid.wav");
 }
 
 void midi_action() {
